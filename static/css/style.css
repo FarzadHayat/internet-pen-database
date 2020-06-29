@@ -1,0 +1,42 @@
+/* header */
+/* css for title */
+header li{
+    width: 50%;
+    text-align: center;
+    color: white;
+    padding: 14px 16px;
+}
+
+/* css for navbar table */
+ul{
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #dddddd;
+}
+
+/* css for navbar list */
+ul li{
+    display: flex;
+    float: left;
+}
+
+/* css for navbar links */
+ul li a{
+    display: block;
+    text-align: center;
+    color: white;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+/* highlight page on mouse hover */
+ul nav li a:hover{
+    background-color: #111111;
+}
+
+/* highlight the current active link */
+ul nav li a .active{
+    background-color: #4CAF50;
+}

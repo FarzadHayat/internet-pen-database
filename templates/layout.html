@@ -1,0 +1,14 @@
+<!doctype html>
+<html>
+    <head>
+        <title>PEN{{page_title}}</title>
+        <link rel="stylesheet" href="/static/css/style.css">
+    </head>
+    <body>
+        <div>
+            {% include 'nav.html' %}
+            {% block content %}{% endblock %}
+            {% include 'footer.html' %}
+        </div>
+    </body>
+</html>
