@@ -1,6 +1,6 @@
 from flask import Flask, render_template, abort, request, redirect, url_for
 from flask_sqlalchemy import SQLAlchemy
-from forms import Select_Movie
+from forms import Select_Pen
 import models
 
 app = Flask(__name__)
@@ -41,6 +41,20 @@ def pen(id):
 @app.errorhandler(404)
 def page_not_found(e):
     return render_template('404.html')
+
+# dropdown list form
+@app.route('/choose_pen', methods = ['GET', 'POST'])
+def choose_pen():
+    form = Select_Pen()
+    pens = models.Pen.query.all()
+    form.pens.choices = [(pen.id, pen.name) for pen in pens]
+    if request.method == 'POST':
+        if form.validate_on_submit():
+            return redirect(url_for('pen', id = form.pens.data))
+        else:
+            abort(404)
+            # uses a premade template. pen.html ????
+    return render_template('pen.html', name = 'Select A Pen', form = form)
 
 if __name__ == "__main__":
     app.run(debug=True)

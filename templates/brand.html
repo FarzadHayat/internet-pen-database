@@ -1,8 +1,13 @@
 {% extends 'layout.html' %}
 {% block content %}
 <div id="brand_block">
+    <!-- brand details -->
     <h1>{{brand.name}}</h1>
     <p>{{brand.desc}}</p>
-    <img src="{{brand.photo}}"/>'
+    <img src="{{brand.photo}}"/>
+    <!-- list of all pens in this brand -->
+    {% for pen in brand.pens %}
+    <li>{{ pen.name }}</li>
+    {% endfor %}
 </div>
 {% endblock %}
