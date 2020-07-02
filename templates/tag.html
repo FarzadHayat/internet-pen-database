@@ -1,0 +1,13 @@
+{% extends 'layout.html' %}
+{% block content %}
+<div id="tag_block">
+    <!-- tag details -->
+    <h1>{{tag.name}}</h1>
+    <p>{{tag.desc}}</p>
+    <img src="{{tag.photo}}"/>
+    <!-- list of all pens in this tag -->
+    {% for pen in tag.pens %}
+    <li>{{ pen.name }}</li>
+    {% endfor %}
+</div>
+{% endblock %}

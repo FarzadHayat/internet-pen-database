@@ -31,7 +31,8 @@ def brand(id):
 # tag page route
 @app.route('/tag/<int:id>')
 def tag(id):
-    return render_template('tag.html', page_title=' TAGS')
+    tag = models.Tag.query.filter_by(id=id).first_or_404()
+    return render_template('tag.html', page_title=' TAGS', tag = tag)
 
 # pen page route
 @app.route('/pen/<int:id>')
