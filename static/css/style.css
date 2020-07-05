@@ -6,6 +6,9 @@
     background-color: #2f3234;
     display: flex;
     text-align: center;
+    position: fixed;
+    width: 100%;
+    top: 0;
 }
 
 /* header */
@@ -31,8 +34,8 @@ nav a:hover{
 }
 
 /* highlight the current active navbar link */
-nav a .active{
-    background-color: #4CAF50;
+nav .active{
+    background-color: #34a538 !important;
 }
 
 /* smooth scrolling for anchor links */
@@ -54,4 +57,13 @@ body{
 a{
     text-decoration: none;
     color: white;
+}
+
+/* photos on all brands page */
+.all_brands_image{
+    background: url({{brand.photo}}) no-repeat center;
+    overflow: hidden;
+    height: 250px;
+    width: 250px;
+    background-size: cover;
 }

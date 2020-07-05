@@ -1,4 +1,8 @@
 <h1 id = "brands">All Brands</h1>
-{% for brand in brands %}
-<p>.<br>.<br><a href="/brand/{{ brand.id }}">{{ brand.name }}</a><br>.<br>.</p>
-{% endfor %}
+<ul>
+    {% for brand in brands %}
+    <li class="all_brands_image">
+        <a href="/brand/{{ brand.id }}">{{ brand.name }}</a>
+    </li>
+    {% endfor %}
+</ul>

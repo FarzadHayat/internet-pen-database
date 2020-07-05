@@ -3,10 +3,31 @@
     <header>
         <p>PENS</p>
     </header>
+    
     <nav>
-        <a href ="/">Home</a><!-- scroll to the top -->
-        <a href ="/#brands">Brands</a><!-- directs user to the all brands page -->
-        <a href ="/#tags">Tags</a><!-- directs user to the all tags page -->
+        <a href ="/#" class="navlink">Home</a><!-- scroll to the top -->
+        <a href ="/#brands" class="navlink">Brands</a><!-- directs user to the all brands page -->
+        <a href ="/#tags" class="navlink">Tags</a><!-- directs user to the all tags page -->
         <a href="">Search</a>
     </nav>
 </div>
+<div style="padding-top: 50px;"></div>
+<!-- script for hightlighting active link on click -->
+<script>
+var naavy = document.getElementsByClassName("navlink");
+var length = naavy.length;
+
+for(var i=0; i<length; i++) {
+    naavy[i].addEventListener("click", function() {
+        highlight(this);
+    });
+}
+
+function highlight(element) {
+    for(var i=0; i<length; i++) {
+       naavy[i].classList.remove("active");
+    }
+
+    element.classList.add("active");
+}
+</script>
