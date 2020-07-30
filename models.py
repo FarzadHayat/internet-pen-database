@@ -1,6 +1,12 @@
 from main import db
 
-# pen brands
+# pen tag joining table
+PenTag = db.Table('PenTag', db.Model.metadata,
+db.Column('pid', db.Integer, db.ForeignKey('Pen.id')),
+db.Column('tid', db.Integer, db.ForeignKey('Tag.id'))
+)
+
+# brands
 class Brand(db.Model):
     __tablename__ = 'Brand'
 
@@ -24,7 +30,7 @@ class Credits(db.Model):
     def __str__(self):
         return self.name
 
-# individual pens
+# pens
 class Pen(db.Model):
     __tablename__ = "Pen"
 
@@ -33,12 +39,13 @@ class Pen(db.Model):
     desc = db.Column(db.Text)
     photo = db.Column(db.Text)
     bid = db.Column(db.Integer,db.ForeignKey('Brand.id'), nullable = False)
-    tags = db.relationship('PenTags', back_populates='pen')
+    tags = db.relationship('Tag', secondary=PenTag, back_populates='pens')
+
 
     def __str__(self):
         return self.name
 
-# pen tags
+# tags
 class Tag(db.Model):
     __tablename__ = "Tag"
 
@@ -46,20 +53,7 @@ class Tag(db.Model):
     name = db.Column(db.String, nullable = False)
     desc = db.Column(db.Text)
     photo = db.Column(db.Text)
-    pens = db.relationship('PenTags', back_populates='tag')
-
-    def __str__(self):
-        return self.name
-
-# pen tag joining table
-class PenTags(db.Model):
-    __tablename__ = "PenTags"
-
-    id = db.Column(db.Integer, primary_key = True)
-    pid = db.Column(db.Integer, db.ForeignKey('Pen.id'))
-    tid = db.Column(db.Integer, db.ForeignKey('Tag.id'))
-    pen = db.relationship('Pen', back_populates='tags')
-    tag = db.relationship('Tag', back_populates='pens')
+    pens = db.relationship('Pen', secondary=PenTag, back_populates='tags')
 
     def __str__(self):
         return self.name

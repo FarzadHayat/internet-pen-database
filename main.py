@@ -37,7 +37,8 @@ def tag(id):
 # pen page route
 @app.route('/pen/<int:id>')
 def pen(id):
-    return render_template('pen.html', page_title=())
+    pen = models.Pen.query.filter_by(id=id).first_or_404()
+    return render_template('pen.html', page_title=(' PENS '), pen = pen)
 
 @app.errorhandler(404)
 def page_not_found(e):
