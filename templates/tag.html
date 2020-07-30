@@ -1,13 +1,24 @@
 {% extends 'layout.html' %}
 {% block content %}
-<div id="tag_block">
-    <!-- tag details -->
+<div id="item-page">
+    <!-- tag title -->
     <h1>{{tag.name}}</h1>
-    <p>{{tag.desc}}</p>
-    <img src="{{tag.photo}}"/>
-    <!-- list of all pens in this tag -->
-    {% for pen in tag.pens %}
-    <li>{{ pen.name }}</li>
-    {% endfor %}
+    <div id="item-page-container">
+        <!-- tag photo -->
+        <div id="page-photo">
+            <img src="{{ tag.photo }}"/>
+        </div>
+        <!-- tag details -->
+        <div id="page-details">
+            <p>{{tag.desc}}</p>
+            <br>
+            <!-- list all pens for this tag -->
+            <ul>
+                {% for pen in tag.pens %}
+                <li><a href="/pen/{{ pen.id }}">{{ pen.name }}</a></li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
 </div>
 {% endblock %}

@@ -1,13 +1,24 @@
 {% extends 'layout.html' %}
 {% block content %}
-<div id="brand_block">
-    <!-- brand details -->
+<div id="item-page">
+    <!-- brand title -->
     <h1>{{brand.name}}</h1>
-    <p>{{brand.desc}}</p>
-    <img src="{{brand.photo}}"/>
-    <!-- list of all pens in this brand -->
-    {% for pen in brand.pens %}
-    <li>{{ pen.name }}</li>
-    {% endfor %}
+    <div id="item-page-container">
+        <!-- brand photo -->
+        <div id="page-photo">
+            <img src="{{ brand.photo }}"/>
+        </div>
+        <!-- brand details -->
+        <div id="page-details">
+            <p>{{brand.desc}}</p>
+            <br>
+            <!-- list all pens for this brand -->
+            <ul>
+                {% for pen in brand.pens %}
+                <li><a href="/pen/{{ pen.id }}">{{ pen.name }}</a></li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
 </div>
 {% endblock %}
