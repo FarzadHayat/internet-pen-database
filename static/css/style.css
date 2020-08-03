@@ -9,6 +9,11 @@
     position: fixed;
     width: 100%;
     top: 0;
+    z-index: 1000;
+    -webkit-transition: all 0.4s ease;
+    -moz-transition: all 0.4s ease;
+    -o-transition: all 0.4s ease;
+    transition: all 0.4s ease;
 }
 
 /* header */
@@ -59,11 +64,91 @@ a{
     color: white;
 }
 
-/* photos on all brands page */
-.all_brands_image{
-    background: url({{brand.photo}}) no-repeat center;
-    overflow: hidden;
+/* page titles */
+h1{
+    text-align: center;
+    margin: 0;
+    padding: 1rem 0;
+}
+
+/* all brands page */
+/* table of all brand info cards */
+#brands{
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    display: grid;
+    grid-template-columns:  repeat(auto-fill, minmax(250px, 1fr));
+}
+
+.card{
     height: 250px;
     width: 250px;
+    position: relative;
+    overflow: hidden;
+}
+
+.card-photo{
+    overflow: hidden;
+    position: absolute;
+    background-repeat: no-repeat;
+    background-position: center;
     background-size: cover;
+    height: 100%;
+    width: 100%;
+}
+
+.card-info{
+    opacity: 0;
+    position: absolute;
+    height: 100%;
+    z-index: 1;
+    text-shadow: 1px 1px 1px black;
+}
+
+.card-info h2{
+    text-align: center;
+}
+
+.card-info p{
+    padding: 10px;
+    overflow: hidden;
+}
+
+.card-info:hover{
+    transition: all 0.25s ease;
+    opacity: 1;
+}
+
+.card-info:hover ~ .card-photo{
+    transition: all 0.25s ease;
+    filter: blur(1rem);
+}
+
+/* individual pages */
+#item-page{
+    margin: 0;
+    padding: 2rem;
+}
+
+#item-page-container{
+    width: 100%;
+    display: flex;
+    margin: 0;
+}
+
+#page-photo{
+    width: 50%;
+    height: auto;
+    padding: 1rem;
+}
+
+#page-photo img{
+    max-width: 100%;
+}
+
+#page-details{
+    width: 50%;
+    padding: 1rem;
+    height: auto;
 }

@@ -1,8 +1,16 @@
-<h1 id = "brands">All Brands</h1>
-<ul>
-    {% for brand in brands %}
-    <li class="all_brands_image">
-        <a href="/brand/{{ brand.id }}">{{ brand.name }}</a>
-    </li>
-    {% endfor %}
-</ul>
+<div class="main-container">
+    <h1 id="brands-title">All Brands</h1>
+    <div id="brands">
+        {% for brand in brands %}
+        <div class="card" onmouseup="ShowInfo(this)">
+            <div class="card-info">
+                <a href="/brand/{{ brand.id }}">
+                    <h2>{{ brand.name }}</h2>
+                    <p>{{ brand.desc }}</p>
+                </a>
+            </div>
+            <div class="card-photo" style="background-image: url('{{ brand.photo }}')"></div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
