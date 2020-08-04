@@ -1,15 +1,17 @@
 <div class="main-container">
-    <h1 id="brands-title">All Brands</h1>
-    <div id="brands">
-        {% for brand in brands %}
-        <div class="card">
-            <div class="card-info">
-                <h2>{{ brand.name }}</h2>
-                <p class="preview-text">{{ brand.desc }}</p>
-                <a href="/brand/{{ brand.id }}">Read more...</a>
+    <div id="brands-link">
+        <h1 id="brands-title">All Brands</h1>
+        <div id="brands">
+            {% for brand in brands %}
+            <div class="card">
+                <div class="card-info">
+                    <h2>{{ brand.name }}</h2>
+                    <p class="preview-text">{{ brand.desc }}</p>
+                    <a href="/brand/{{ brand.id }}">Read more...</a>
+                </div>
+                <div class="card-photo" style="background-image: url('{{ brand.photo }}')"></div>
             </div>
-            <div class="card-photo" style="background-image: url('{{ brand.photo }}')"></div>
+            {% endfor %}
         </div>
-        {% endfor %}
     </div>
 </div>

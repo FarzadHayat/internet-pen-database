@@ -3,31 +3,73 @@
     <header>
         <p>PENS</p>
     </header>
-    
-    <nav>
-        <a href ="/#" class="navlink">Home</a><!-- scroll to the top -->
-        <a href ="/#brands" class="navlink">Brands</a><!-- directs user to the all brands page -->
-        <a href ="/#tags" class="navlink">Tags</a><!-- directs user to the all tags page -->
+    <nav class="nav">
+        <a href ="/#" class="navlink" id="home-button">Home</a><!-- scroll to the top -->
+        <a href ="/#brands-link" class="navlink">Brands</a><!-- directs user to the all brands page -->
+        <a href ="/#tags-link" class="navlink">Tags</a><!-- directs user to the all tags page -->
         <a href="">Search</a>
     </nav>
 </div>
 <div style="padding-top: 50px;"></div>
-<!-- script for hightlighting active link on click -->
-<script>
-var naavy = document.getElementsByClassName("navlink");
-var length = naavy.length;
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js">
+    // // script for highlighting active link on click
+    // var naavy = document.getElementsByClassName("navlink");
+    // var length = naavy.length;
 
-for(var i=0; i<length; i++) {
-    naavy[i].addEventListener("click", function() {
-        highlight(this);
-    });
-}
+    // for(var i=0; i<length; i++) {
+    //     naavy[i].addEventListener("click", function() {
+    //         highlight(this);
+    //     });
+    // }
 
-function highlight(element) {
-    for(var i=0; i<length; i++) {
-       naavy[i].classList.remove("active");
-    }
+    // function highlight(element) {
+    //     for(var i=0; i<length; i++) {
+    //     naavy[i].classList.remove("active");
+    //     }
 
-    element.classList.add("active");
-}
+    //     element.classList.add("active");
+    // }
+
+    // var homeButton = document.getElementById("home-button");
+    // homeButton.classList.add("active");
+
+
+
+    // // script for highlighting active link on scroll
+    // $(document).ready(function(){
+    //     // $sections includes all of the container divs that relate to menu items.
+    //     var $sections = $('.main-container');
+    
+    // // The user scrolls
+    // $(window).scroll(function(){
+        
+    //     // currentScroll is the number of pixels the window has been scrolled
+    //     var currentScroll = $(this).scrollTop();
+        
+    //     // $currentSection is somewhere to place the section we must be looking at
+    //     var $currentSection
+        
+    //     // We check the position of each of the divs compared to the windows scroll positon
+    //     $sections.each(function(){
+    //     // divPosition is the position down the page in px of the current section we are testing      
+    //     var divPosition = $(this).offset().top;
+        
+    //     // If the divPosition is less the the currentScroll position the div we are testing has moved above the window edge.
+    //     // the -1 is so that it includes the div 1px before the div leave the top of the window.
+    //     if( divPosition - 1 < currentScroll ){
+    //         // We have either read the section or are currently reading the section so we'll call it our current section
+    //         $currentSection = $(this);
+            
+    //         // If the next div has also been read or we are currently reading it we will overwrite this value again. This will leave us with the LAST div that passed.
+    //     }
+        
+    //     // This is the bit of code that uses the currentSection as its source of ID
+    //     var id = $currentSection.attr('id');
+    //     $('a').removeClass('active');
+    //     $("[href=#"+id+"]").addClass('active');
+        
+    //     })
+
+    // });
+    // });
 </script>

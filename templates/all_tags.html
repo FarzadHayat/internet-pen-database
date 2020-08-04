@@ -1,12 +1,14 @@
 <div class="main-container">
-    <h1 id="tags-title">All Tags</h1>
-    <div id="tags">
-        <div id="slides">
-            {% for tag in tags %}
-            <div class="slide">
-                </p><a href="/tag/{{ tag.id }}">{{ tag.name }}</a>
+    <div id="tags-link">
+        <h1 id="tags-title">All Tags</h1>
+        <div id="tags">
+            <div id="slides">
+                {% for tag in tags %}
+                <div class="slide">
+                    </p><a href="/tag/{{ tag.id }}">{{ tag.name }}</a>
+                </div>
+                {% endfor %}
             </div>
-            {% endfor %}
         </div>
     </div>
 </div>

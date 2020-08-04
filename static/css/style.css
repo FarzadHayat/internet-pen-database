@@ -46,6 +46,7 @@ nav .active{
 /* smooth scrolling for anchor links */
 html{
     scroll-behavior: smooth;
+    scroll-padding-top: 50px;
 }
 
 /* entire website */
@@ -69,6 +70,7 @@ h1{
     text-align: center;
     margin: 0;
     padding: 1rem 0;
+    display: block;
 }
 
 /* all brands page */
@@ -166,4 +168,16 @@ h1{
     width: 50%;
     padding: 1rem;
     height: auto;
+}
+
+.main-container{
+    margin: 0;
+    width: 100%;
+    height: 1080px;
+}
+
+#wallpaper{
+    background-image: url('/static/images/wallpaper.jpg') no-repeat cover center;
+    height: 100%;
+    width: 100%;
 }
