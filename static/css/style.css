@@ -102,17 +102,9 @@ h1{
     opacity: 0;
     position: absolute;
     height: 100%;
+    width: 100%;
     z-index: 1;
     text-shadow: 1px 1px 1px black;
-}
-
-.card-info h2{
-    text-align: center;
-}
-
-.card-info p{
-    padding: 10px;
-    overflow: hidden;
 }
 
 .card-info:hover{
@@ -123,6 +115,29 @@ h1{
 .card-info:hover ~ .card-photo{
     transition: all 0.25s ease;
     filter: blur(1rem);
+}
+
+.card-info h2{
+    text-align: center;
+    top: 0;
+    height: 20%;
+    margin: 0 auto;
+}
+
+.card-info p{
+    padding: 10px;
+    overflow: hidden;
+    height: 60%;
+    margin: 0 auto;
+}
+
+.card-info a{
+    text-align: center;
+    bottom: 0;
+    color: royalblue;
+    height: 20%;
+    margin: 0 auto;
+    padding: 10px;
 }
 
 /* individual pages */

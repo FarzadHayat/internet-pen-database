@@ -2,12 +2,11 @@
     <h1 id="brands-title">All Brands</h1>
     <div id="brands">
         {% for brand in brands %}
-        <div class="card" onmouseup="ShowInfo(this)">
+        <div class="card">
             <div class="card-info">
-                <a href="/brand/{{ brand.id }}">
-                    <h2>{{ brand.name }}</h2>
-                    <p>{{ brand.desc }}</p>
-                </a>
+                <h2>{{ brand.name }}</h2>
+                <p class="preview-text">{{ brand.desc }}</p>
+                <a href="/brand/{{ brand.id }}">Read more...</a>
             </div>
             <div class="card-photo" style="background-image: url('{{ brand.photo }}')"></div>
         </div>
