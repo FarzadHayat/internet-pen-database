@@ -16,14 +16,9 @@
     transition: all 0.4s ease;
 }
 
-/* header */
-header{
-    width: 50%;
-}
-
 /* navbar */
 nav{
-    width: 50%;
+    width: 100%;
 }
 
 /* navbar links */
