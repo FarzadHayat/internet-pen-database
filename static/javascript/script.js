@@ -17,6 +17,30 @@ window.onresize = () =>{
     squarify();
 }
 
+// Highlight anchor link
+$(document).ready(function(){
+    
+    var navLink = $('.navlink');
+    const bodyContainer = $('#body-container');
+    
+    $(bodyContainer).scroll(function(){
+        // get location of scroll bar
+        var scrollBarLocation = $(this).scrollTop();
+
+        // get distance of scroll bar to each section
+        navLink.each(function(){
+            var sectionOffset = $(this.hash).offset().top;
+
+            // highlight active link and un-highlight the rest
+            if(sectionOffset <= scrollBarLocation){
+                $(this).addClass('active');
+                
+                $(this).siblings().removeClass('active');
+            }
+        })
+    })
+})
+
 // shortify = () =>{
 //     textList = document.getElementsByClassName("preview-text");
 //     console.log(list)
