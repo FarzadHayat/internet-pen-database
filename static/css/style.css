@@ -55,6 +55,7 @@ body{
     /* font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; */
 }
 
+/* main div inside body that contains everything */
 #body-container{
     scroll-behavior: smooth;
     scroll-padding-top: 50px;
@@ -63,6 +64,35 @@ body{
     width: inherit;
     overflow-y: scroll;
     scroll-snap-type: y mandatory;
+}
+
+/* applies to every container div inside the body */
+.main-container{
+    margin: 0;
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    scroll-snap-align: start;
+}
+
+/* home page - landing screen */
+#wallpaper{
+    background-image: url('/static/images/wallpaper.jpg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100vh;
+    width: 100%;
+    display: grid;
+    place-items: center;
+    margin-top: -50px;
+}
+
+#wallpaper h1{
+    font-size: 500%;
+    -webkit-text-stroke-color: black;
+    -webkit-text-stroke-width: 4px;
 }
 
 /* all links */
@@ -80,7 +110,7 @@ h1{
 
 /* all brands page */
 /* table of all brand info cards */
-#brands{
+#brands-content{
     margin: 0;
     padding: 0;
     width: 100%;
@@ -173,31 +203,4 @@ h1{
     width: 50%;
     padding: 1rem;
     height: auto;
-}
-
-.main-container{
-    margin: 0;
-    width: 100%;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    scroll-snap-align: start;
-}
-
-#wallpaper{
-    background-image: url('/static/images/wallpaper.jpg');
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    height: 100vh;
-    width: 100%;
-    display: grid;
-    place-items: center;
-    margin-top: -50px;
-}
-
-#wallpaper h1{
-    font-size: 500%;
-    -webkit-text-stroke-color: black;
-    -webkit-text-stroke-width: 4px;
 }
