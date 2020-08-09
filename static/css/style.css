@@ -133,6 +133,7 @@ h1{
     background-size: cover;
     height: 100%;
     width: 100%;
+    transition: all 0.25s ease;
 }
 
 .card-info{
@@ -141,7 +142,7 @@ h1{
     height: 100%;
     width: 100%;
     z-index: 1;
-    text-shadow: 1px 1px 1px black;
+    text-shadow: 1px 1px 1px black; 
 }
 
 .card-info:hover{

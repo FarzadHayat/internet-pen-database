@@ -2,6 +2,7 @@
     <div id="brands">
         <h1 id="brands-title">All Brands</h1>
         <div id="brands-content">
+            <!-- current brands -->
             {% for brand in brands %}
             <div class="card">
                 <div class="card-info">
@@ -9,9 +10,16 @@
                     <p class="preview-text">{{ brand.desc }}</p>
                     <a href="/brand/{{ brand.id }}">Read more...</a>
                 </div>
-                <div class="card-photo" style="background-image: url('{{ brand.photo }}')"></div>
+                <div class="card-photo" style="background-image: url('/static/images/brands/{{ brand.photo }}')"></div>
             </div>
             {% endfor %}
+            <!-- add new brand -->
+            <div class="card">
+                <div class="card-info">
+                    <h2><a href="{{ url_for('add_brand') }}">Card</a></h2>
+                </div>
+                <div class="card-photo" style="background-color:darkgray; background-image: url('/static/images/add.png')"></div>
+            </div>
         </div>
     </div>
 </div>
