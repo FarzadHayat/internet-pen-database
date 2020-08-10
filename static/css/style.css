@@ -176,6 +176,7 @@ h1{
     height: 20%;
     margin: 0 auto;
     padding: 10px;
+    display: inline-flex;
 }
 
 /* individual pages */

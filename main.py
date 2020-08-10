@@ -60,7 +60,7 @@ def choose_pen():
             # uses a premade template. pen.html ????
     return render_template('pen.html', title = 'Select A Pen', form = form)
 
-# save brand photo
+# save brand photo to computer files
 def save_photo(form_photo):
     # give the file a random name to prevent errors with similar file names already in the database
     random_hex = secrets.token_hex(8)
@@ -71,6 +71,13 @@ def save_photo(form_photo):
     form_photo.save(photo_path)
 
     return photo_fn
+
+# delete brand photo from computer files
+def delete_photo(form_photo):
+    photo_path = os.path.join(app.root_path, 'static/images/brands', form_photo)
+    os.remove(photo_path)
+
+    return
 
 # form to add a brand to the database
 @app.route('/add_brand', methods = ['GET', 'POST'])
@@ -94,6 +101,15 @@ def add_brand():
         else:
             return render_template('add_brand.html', form = form, title = "Add a Brand")
 
+# form to delete a brand from the database
+@app.route('/delete_brand/<int:id>')
+def delete_brand(id):
+    brand = db.session.query(models.Brand).filter(models.Brand.id==id).first_or_404()
+    if brand.photo:
+        photo_file = delete_photo(brand.photo)
+    db.session.delete(brand)
+    db.session.commit()
+    return redirect(url_for('home'))
 
 if __name__ == "__main__":
     app.run(debug=True)
