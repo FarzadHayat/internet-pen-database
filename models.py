@@ -14,6 +14,7 @@ class Brand(db.Model):
     name = db.Column(db.String, nullable = False)
     desc = db.Column(db.Text)
     photo = db.Column(db.Text)
+    deletable = db.Column(db.Boolean)
     pens = db.relationship('Pen', backref='brand')
 
     def __str__(self):

@@ -95,6 +95,7 @@ def add_brand():
             if form.photo.data:
                 photo_file = save_photo(form.photo.data)
                 new_brand.photo = photo_file
+            new_brand.deletable = True
             db.session.add(new_brand)
             db.session.commit()
             return redirect(url_for('brand', id=new_brand.id))
