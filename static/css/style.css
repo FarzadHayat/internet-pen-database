@@ -19,20 +19,19 @@ nav{
     padding: 0;
     overflow: hidden;
     background-color: #252729;
-    display: flex;
     text-align: center;
     position: fixed;
     width: 100%;
     top: 0;
     z-index: 1000;
     transition: all 0.4s ease;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
 }    
 
 /* navbar links */
 nav a{
-    float: left;
     padding: 1rem 0;
-    width: 25%;
 }    
 
 /* highlight navbar page link on mouse hover */
