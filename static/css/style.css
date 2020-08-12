@@ -8,9 +8,30 @@ body{
     background-color: #181a1b;
     color: white;
     margin: 0;
-    height: inherit;
+    height: 100%;
     overflow: hidden;
     font-family: cursive;
+}
+
+/* main div inside body that contains everything */
+#main{
+    scroll-behavior: smooth;
+    scroll-padding-top: 50px;
+    margin: 0;
+    height: inherit;
+    width: inherit;
+    overflow-y: scroll;
+    scroll-snap-type: y mandatory;
+}
+
+/* applies to every container div inside the body eg. landing page, all brands, all tags */
+.section{
+    margin: 0;
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    scroll-snap-align: start;
 }
 
 /* navigation bar */
@@ -43,27 +64,6 @@ nav a:hover{
 nav .active{
     background-color: #34a538 !important;
 }    
-
-/* main div inside body that contains everything */
-#main{
-    scroll-behavior: smooth;
-    scroll-padding-top: 50px;
-    margin: 0;
-    height: inherit;
-    width: inherit;
-    overflow-y: scroll;
-    scroll-snap-type: y mandatory;
-}
-
-/* applies to every container div inside the body eg. landing page, all brands, all tags */
-.section{
-    margin: 0;
-    width: 100%;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    scroll-snap-align: start;
-}
 
 /* home page - landing screen */
 #wallpaper{

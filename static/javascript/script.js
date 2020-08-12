@@ -21,22 +21,24 @@ window.onresize = () =>{
 $(document).ready(function(){
     
     var navLink = $('.navlink');
-    const bodyContainer = $('#main');
-    
-    $(bodyContainer).scroll(function(){
+    const main = $('#main');
+
+    $(main).scroll(function(){
         // get location of scroll bar
         var scrollBarLocation = $(this).scrollTop();
 
         // get distance of scroll bar to each section
         navLink.each(function(){
-            var sectionOffset = $(this.hash).offset().top;
+            var sectionOffset = $(this.hash).offset().top + scrollBarLocation - 200;
 
             // highlight active link and un-highlight the rest
             if(sectionOffset <= scrollBarLocation){
                 $(this).addClass('active');
-                
                 $(this).siblings().removeClass('active');
             }
+            // Debug
+            console.log(this.hash, "Scroll bar location: ", scrollBarLocation)
+            console.log(this.hash, "Section offset: ", sectionOffset)
         })
     })
 })
