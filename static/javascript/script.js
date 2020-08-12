@@ -21,7 +21,7 @@ window.onresize = () =>{
 $(document).ready(function(){
     
     var navLink = $('.navlink');
-    const bodyContainer = $('#body-container');
+    const bodyContainer = $('#main');
     
     $(bodyContainer).scroll(function(){
         // get location of scroll bar
