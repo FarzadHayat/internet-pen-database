@@ -1,30 +1,28 @@
-<div class="section">
-    <div id="brands">
-        <h1 id="brands-title">All Brands</h1>
-        <div id="brands-content">
-            <!-- current brands -->
-            {% for brand in brands %}
-            <div class="card">
-                <div class="card-info">
-                    <h2>{{ brand.name }}</h2>
-                    <p class="preview-text">{{ brand.desc }}</p>
-                    <a href="/brand/{{ brand.id }}">Read more...</a>
-                    {% if brand.deletable == true %}
-                    <a href="/edit_brand/{{ brand.id }}">Edit</a>
-                    <a href="/delete_brand/{{ brand.id }}">Delete</a>
-                    {% endif %}
-                </div>
-                <div class="card-photo" style="background-image: url('/static/images/brands/{{ brand.photo }}')"></div>
+<div class="section" id="brands">
+    <h1>All Brands</h1>
+    <div id="brands-grid">
+        <!-- current brands -->
+        {% for brand in brands %}
+        <div class="card">
+            <div class="card-info">
+                <h2>{{ brand.name }}</h2>
+                <p class="preview-text">{{ brand.desc }}</p>
+                <a href="/brand/{{ brand.id }}">Read more...</a>
+                {% if brand.deletable == true %}
+                <a href="/edit_brand/{{ brand.id }}">Edit</a>
+                <a href="/delete_brand/{{ brand.id }}">Delete</a>
+                {% endif %}
             </div>
-            {% endfor %}
-            <!-- add new brand -->
-            <div class="card">
-                <div class="card-info">
-                    <h2><a href="{{ url_for('add_brand') }}">Card</a></h2>
-                </div>
-                <div class="card-photo" style="background-color:darkgray; background-image: url('/static/images/add.png')"></div>
-            </div>
+            <div class="card-photo" style="background-image: url('/static/images/brands/{{ brand.photo }}')"></div>
         </div>
-        <div style="margin-top: 250px"></div>
+        {% endfor %}
+        <!-- add new brand -->
+        <div class="card">
+            <div class="card-info">
+                <h2><a href="{{ url_for('add_brand') }}">Card</a></h2>
+            </div>
+            <div class="card-photo" style="background-color:darkgray; background-image: url('/static/images/add.png')"></div>
+        </div>
     </div>
+    <div style="margin-top: 250px"></div>
 </div>
