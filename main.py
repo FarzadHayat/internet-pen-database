@@ -67,14 +67,14 @@ def save_photo(form_photo):
     f_name, f_ext = os.path.splitext(form_photo.filename)
     photo_fn = random_hex + f_ext
     # save the uploaded photo to the database
-    photo_path = os.path.join(app.root_path, 'static/images/brands', photo_fn)
+    photo_path = os.path.join(app.root_path, 'static', 'images', 'brands', photo_fn)
     form_photo.save(photo_path)
 
     return photo_fn
 
 # delete brand photo from computer files
 def delete_photo(form_photo):
-    photo_path = os.path.join(app.root_path, 'static/images/brands', form_photo)
+    photo_path = os.path.join(app.root_path, 'static', 'images', 'brands', form_photo)
     os.remove(photo_path)
 
     return
@@ -83,24 +83,42 @@ def delete_photo(form_photo):
 @app.route('/add_brand', methods = ['GET', 'POST'])
 def add_brand():
     form = Add_Brand()
-    # request to see the page
-    if request.method=='GET':
-        return render_template('add_brand.html', form = form, title = "Add a Brand")
     # form submitted to the server by a user
-    else:
-        if form.validate_on_submit():
-            new_brand = models.Brand()
-            new_brand.name = form.name.data
-            new_brand.desc = form.desc.data
-            if form.photo.data:
-                photo_file = save_photo(form.photo.data)
-                new_brand.photo = photo_file
-            new_brand.deletable = True
-            db.session.add(new_brand)
-            db.session.commit()
-            return redirect(url_for('brand', id=new_brand.id))
-        else:
-            return render_template('add_brand.html', form = form, title = "Add a Brand")
+    if form.validate_on_submit():
+        new_brand = models.Brand()
+        new_brand.name = form.name.data
+        new_brand.desc = form.desc.data
+        if form.photo.data:
+            photo_file = save_photo(form.photo.data)
+            new_brand.photo = photo_file
+        new_brand.deletable = True
+        db.session.add(new_brand)
+        db.session.commit()
+        return redirect(url_for('brand', id=new_brand.id))
+    # request to see the page
+    return render_template('add_brand.html', form = form, title = "Add Brand")
+
+# form to edit a brand in the database
+@app.route('/edit_brand/<int:id>', methods = ['GET', 'POST'])
+def edit_brand(id):
+    form = Add_Brand()
+    # current brand data
+    brand = db.session.query(models.Brand).filter(models.Brand.id==id).first_or_404()
+    # form submitted to the server by a user
+    if form.validate_on_submit():
+        brand.name = form.name.data
+        brand.desc = form.desc.data
+        if form.photo.data:
+            photo_file = save_photo(form.photo.data)
+            delete_photo(brand.photo)
+            brand.photo = photo_file
+        db.session.commit()
+        return redirect(url_for('brand', id=brand.id))
+    # request to see the page
+    # populate fields with currently saved data
+    form.name.data = brand.name
+    form.desc.data = brand.desc
+    return render_template('add_brand.html', form = form, title = "Edit Brand")
 
 # form to delete a brand from the database
 @app.route('/delete_brand/<int:id>')
