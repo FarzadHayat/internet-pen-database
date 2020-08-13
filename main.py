@@ -114,10 +114,10 @@ def edit_brand(id):
             brand.photo = photo_file
         db.session.commit()
         return redirect(url_for('brand', id=brand.id))
-    # request to see the page
     # populate fields with currently saved data
     form.name.data = brand.name
     form.desc.data = brand.desc
+    # request to see the page
     return render_template('add_brand.html', form = form, title = "Edit Brand")
 
 # form to delete a brand from the database

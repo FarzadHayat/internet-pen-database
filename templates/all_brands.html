@@ -4,6 +4,7 @@
         <!-- current brands -->
         {% for brand in brands %}
         <div class="card">
+            <!-- brand information -->
             <div class="card-info">
                 <h2>{{ brand.name }}</h2>
                 <p class="preview-text">{{ brand.desc }}</p>
@@ -13,6 +14,7 @@
                 <a href="/delete_brand/{{ brand.id }}">Delete</a>
                 {% endif %}
             </div>
+            <!-- brand logo as a background image -->
             <div class="card-photo" style="background-image: url('/static/images/brands/{{ brand.photo }}')"></div>
         </div>
         {% endfor %}
