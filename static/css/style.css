@@ -107,18 +107,19 @@ h1{
     grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
 }
 
-/* card */
+/* card container */
 .card{
-    height: 100%;
     width: 100%;
     position: relative;
-    transform-style: preserve-3d;
-    transition: all 1s ease;
 }
 
-/* flip card over */
-.card:hover{
-    transform: rotateY(180deg);
+/* card */
+.card-content{
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    transform-style: preserve-3d;
+    transition: all 0.8s ease;
 }
 
 /* card photo */

@@ -4,17 +4,19 @@
         <!-- current brands -->
         {% for brand in brands %}
         <div class="card">
-            <!-- brand logo as a background image -->
-            <div class="card-photo" style="background-image: url('/static/images/brands/{{ brand.photo }}')"></div>
-            <!-- brand information -->
-            <div class="card-info">
-                <h2>{{ brand.name }}</h2>
-                <p class="preview-text">{{ brand.desc }}</p>
-                <a href="/brand/{{ brand.id }}">Read more...</a>
-                {% if brand.deletable == true %}
-                <a href="/edit_brand/{{ brand.id }}">Edit</a>
-                <a href="/delete_brand/{{ brand.id }}">Delete</a>
-                {% endif %}
+            <div class="card-content" onclick="flip(this)">
+                <!-- brand logo as a background image -->
+                <div class="card-photo" style="background-image: url('/static/images/brands/{{ brand.photo }}')"></div>
+                <!-- brand information -->
+                <div class="card-info">
+                    <h2>{{ brand.name }}</h2>
+                    <p class="preview-text">{{ brand.desc }}</p>
+                    <a href="/brand/{{ brand.id }}">Read more...</a>
+                    {% if brand.deletable == true %}
+                    <a href="/edit_brand/{{ brand.id }}">Edit</a>
+                    <a href="/delete_brand/{{ brand.id }}">Delete</a>
+                    {% endif %}
+                </div>
             </div>
         </div>
         {% endfor %}

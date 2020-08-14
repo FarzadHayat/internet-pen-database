@@ -17,6 +17,20 @@ window.onresize = () =>{
     squarify();
 }
 
+// Flip brand card on click
+flip = (cardContent) =>{
+    // Flip
+    if(cardContent.style.transform == ''){
+        cardContent.style.transform = 'rotateY(180deg)';
+    }
+    else{
+        // Unflip
+        if(cardContent.style.transform == 'rotateY(180deg)'){
+            cardContent.style.transform = '';
+        }
+    }
+}
+
 // Highlight anchor link
 $(document).ready(function(){
     
@@ -37,8 +51,8 @@ $(document).ready(function(){
                 $(this).siblings().removeClass('active');
             }
             // Debug
-            console.log(this.hash, "Scroll bar location: ", scrollBarLocation)
-            console.log(this.hash, "Section offset: ", sectionOffset)
+            // console.log(this.hash, "Scroll bar location: ", scrollBarLocation)
+            // console.log(this.hash, "Section offset: ", sectionOffset)
         })
     })
 })
