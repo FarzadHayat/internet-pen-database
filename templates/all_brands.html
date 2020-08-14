@@ -19,11 +19,8 @@
         </div>
         {% endfor %}
         <!-- add new brand -->
-        <div class="card">
-            <div class="card-info">
-                <h2><a href="{{ url_for('add_brand') }}">Card</a></h2>
-            </div>
-            <div class="card-photo" style="background-color:darkgray; background-image: url('/static/images/add.png')"></div>
+        <div id="add-card">
+            <a href="{{ url_for('add_brand') }}"></a>
         </div>
     </div>
     <div style="margin-top: 250px"></div>
