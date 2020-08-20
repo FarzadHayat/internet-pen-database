@@ -96,7 +96,7 @@ def add_brand():
         db.session.commit()
         return redirect(url_for('brand', id=new_brand.id))
     # request to see the page
-    return render_template('add_brand.html', form = form, title = "Add Brand")
+    return render_template('add_edit_brand.html', form = form, title = "Add Brand", legend = "Add")
 
 # form to edit a brand in the database
 @app.route('/edit_brand/<int:id>', methods = ['GET', 'POST'])
@@ -118,14 +118,16 @@ def edit_brand(id):
     form.name.data = brand.name
     form.desc.data = brand.desc
     # request to see the page
-    return render_template('add_brand.html', form = form, title = "Edit Brand")
+    return render_template('add_edit_brand.html', form = form, title = "Edit Brand", legend = "Save")
 
 # form to delete a brand from the database
 @app.route('/delete_brand/<int:id>')
 def delete_brand(id):
     brand = db.session.query(models.Brand).filter(models.Brand.id==id).first_or_404()
+    # delete saved photo from files
     if brand.photo:
         photo_file = delete_photo(brand.photo)
+    # delete brand from database
     db.session.delete(brand)
     db.session.commit()
     return redirect(url_for('home'))

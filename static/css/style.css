@@ -11,6 +11,10 @@ body{
     height: 100%;
     overflow: hidden;
     font-family: cursive;
+    /* color theme */
+    --main-highlight-color: #ac961c;
+    /* gets value of navbar items from a javascript function */
+    --navbar-items: 4;
 }
 
 /* main div inside body that contains everything */
@@ -47,7 +51,7 @@ nav{
     z-index: 1000;
     transition: all 0.4s ease;
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(var(--navbar-items), 1fr);
 }    
 
 /* navbar links */
@@ -62,7 +66,7 @@ nav a:hover{
 
 /* highlight the current active navbar link */
 nav .active{
-    background-color: #34a538 !important;
+    background-color: var(--main-highlight-color) !important;
 }    
 
 /* home page - landing screen */
@@ -75,13 +79,14 @@ nav .active{
     width: 100%;
     display: grid;
     place-items: center;
+    /* adjust for the fixed header */
     margin-top: -50px;
 }
 
 #wallpaper h1{
-    font-size: 500%;
+    font-size: 8vw;
     -webkit-text-stroke-color: black;
-    -webkit-text-stroke-width: 4px;
+    -webkit-text-stroke-width: 0.4vw;
 }
 
 /* all links */
@@ -128,10 +133,16 @@ h1{
     height: 100%;
     position: absolute;
     backface-visibility: hidden;
-    background-color: #f1f1f1;
+    background-color: #2b2b2b;
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
+    cursor: pointer;
+}
+
+/* hightlight card on hover */
+.card-photo:hover{
+    box-shadow: 0px 0px 0px 5px var(--main-highlight-color) inset;
 }
 
 /* card info */
@@ -142,30 +153,59 @@ h1{
     backface-visibility: hidden;
     transform: rotateY(180deg);
     background-color: #111111;
+    display: grid;
+    grid-template-columns: auto;
+    grid-template-rows: 1fr 3fr 1fr 1fr;
 }
 
-.card-info h2{
+.card-info:second-child{
+    grid-row: 3fr;
+}
+
+.card-info *{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+}
+
+.card-info .title{
     text-align: center;
-    top: 0;
-    height: 20%;
-    margin: 0 auto;
 }
 
-.card-info p{
-    padding: 10px;
+.card-info .description{
     overflow: hidden;
-    height: 60%;
-    margin: 0 auto;
 }
 
-.card-info a{
+.card-info .readmore{
     text-align: center;
-    bottom: 0;
     color: royalblue;
-    height: 20%;
-    margin: 0 auto;
-    padding: 10px;
-    display: inline-flex;
+}
+
+.card-info .readmore:hover{
+    box-shadow: 0px 0px 0px 5px var(--main-highlight-color) inset;
+}
+
+.card-info .edit-delete{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+.card-info .edit-delete *{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.card-info .edit:hover{
+    background-color: #1a81e0;
+}
+
+.card-info .delete:hover{
+    background-color: #c72020;
 }
 
 /* applies only to card for adding new brands */
@@ -179,7 +219,7 @@ h1{
     display: block;
     width: 100%;
     height: 100%;
-    background-color:darkgray;
+    background-color:#707070;
     background-image: url('/static/images/add.png');
     background-repeat: no-repeat;
     background-position: center;
@@ -187,7 +227,7 @@ h1{
 }
 
 #add-card a:hover{
-    background-color: lightgreen;
+    background-color: var(--main-highlight-color);
 }
 
 /* individual pages */
@@ -216,4 +256,23 @@ h1{
     width: 50%;
     padding: 1rem;
     height: auto;
+}
+
+/* forms */
+#form{
+    display: grid;
+    place-items: center;
+    width: 20%;
+}
+
+#submit{
+    width: 100%;
+    border: none;
+    padding: 15px 32px;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    background-color: var(--main-highlight-color);
 }

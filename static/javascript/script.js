@@ -1,15 +1,23 @@
+// Calculates the number of navbar links in the header
+navbar = () =>{
+    const navItems = $('nav a').length;
+    const body = $('body');
+    body.css({'--navbar-items': navItems});
+}
+
 // Resize all brand cards into squares by setting the height to equal the width.
 squarify = () =>{
     var cardList = document.getElementsByClassName('card');
-    for (var i = 0; i < cardList.length; i++ ) {
+    for(var i = 0; i < cardList.length; i++){
         var cardWidth = $(cardList[i]).width();
-        $(cardList[i]).css({'height':cardWidth+'px'});
+        $(cardList[i]).css({'height': cardWidth+'px'});
     }
 }
 
 // Squarify to set the intial size of the cards.
 window.onload = () =>{
     squarify();
+    navbar();
 }
 
 // Squarify every time the window is resized.
@@ -68,3 +76,4 @@ $(document).ready(function(){
 // }
 
 // shortify();
+

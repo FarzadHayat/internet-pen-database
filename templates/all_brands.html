@@ -9,12 +9,14 @@
                 <div class="card-photo" style="background-image: url('/static/images/brands/{{ brand.photo }}')"></div>
                 <!-- brand information -->
                 <div class="card-info">
-                    <h2>{{ brand.name }}</h2>
-                    <p class="preview-text">{{ brand.desc }}</p>
-                    <a href="/brand/{{ brand.id }}">Read more...</a>
+                    <h2 class="title">{{ brand.name }}</h2>
+                    <p class="description">{{ brand.desc }}</p>
+                    <a class="readmore" href="/brand/{{ brand.id }}">Read more...</a>
                     {% if brand.deletable == true %}
-                    <a href="/edit_brand/{{ brand.id }}">Edit</a>
-                    <a href="/delete_brand/{{ brand.id }}">Delete</a>
+                    <div class="edit-delete">
+                        <a class="edit" href="/edit_brand/{{ brand.id }}">Edit</a>
+                        <a class="delete" href="/delete_brand/{{ brand.id }}">Delete</a>
+                    </div>
                     {% endif %}
                 </div>
             </div>
