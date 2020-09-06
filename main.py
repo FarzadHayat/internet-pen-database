@@ -3,7 +3,7 @@ import secrets
 from flask import Flask, render_template, abort, request, redirect, url_for
 from flask_sqlalchemy import SQLAlchemy
 import models
-from forms import Select_Pen, Add_Brand
+from forms import Search, Add_Brand
 
 app = Flask(__name__)
 
@@ -45,20 +45,6 @@ def pen(id):
 @app.errorhandler(404)
 def page_not_found(e):
     return render_template('404.html')
-
-# dropdown list form to select a pen
-@app.route('/choose_pen', methods = ['GET', 'POST'])
-def choose_pen():
-    form = Select_Pen()
-    pens = models.Pen.query.all()
-    form.pens.choices = [(pen.id, pen.name) for pen in pens]
-    if request.method == 'POST':
-        if form.validate_on_submit():
-            return redirect(url_for('pen', id = form.pens.data))
-        else:
-            abort(404)
-            # uses a premade template. pen.html ????
-    return render_template('pen.html', title = 'Select A Pen', form = form)
 
 # save brand photo to computer files
 def save_photo(form_photo):
@@ -108,9 +94,13 @@ def edit_brand(id):
     if form.validate_on_submit():
         brand.name = form.name.data
         brand.desc = form.desc.data
+        # check if user wants to update the brand photo
         if form.photo.data:
+            # save new photo file
             photo_file = save_photo(form.photo.data)
+            # delete old photo file
             delete_photo(brand.photo)
+            # set new photo
             brand.photo = photo_file
         db.session.commit()
         return redirect(url_for('brand', id=brand.id))
@@ -131,6 +121,33 @@ def delete_brand(id):
     db.session.delete(brand)
     db.session.commit()
     return redirect(url_for('home'))
+
+# search form
+@app.route('/search', methods = ['GET', 'POST'])
+def search():
+    form = Search()
+    pens = models.Pen.query.all()
+    brands = models.Brand.query.all()
+    tags = models.Tag.query.all()
+    # populate the dropdown selections
+    form.brand.choices = [(brand.id, brand.name) for brand in brands]
+    form.tag.choices = [(tag.id, tag.name) for tag in tags]
+
+    selected_tag = form.tag.data
+    selected_brand = form.brand.data
+
+    if request.method == 'POST':
+        if form.validate_on_submit():
+            brand = models.Brand.query.filter_by(id = selected_brand).first()
+            tag = models.Tag.query.filter_by(id = selected_tag).first()
+            # Get a list of the pens common between the brand and the tag chosen.
+            results = list(set(brand.pens).intersection(tag.pens))
+            print(results)
+            # render the search results page
+            return render_template('search_results.html', brand = brand.name, tag = tag.name, results = results)
+        else:
+            abort(404)
+    return render_template('search.html', title = "Find a Pen", form = form)
 
 if __name__ == "__main__":
     app.run(debug=True)

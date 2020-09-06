@@ -6,7 +6,7 @@
     <div id="item-page-container">
         <!-- pen photo -->
         <div id="page-photo">
-            <img src="{{ pen.photo }}"/>
+            <img src="/static/images/pens/{{ pen.photo }}"/>
         </div>
         <!-- pen details -->
         <div id="page-details">
@@ -15,7 +15,7 @@
             <!-- list all tags for this pen -->
             <ul>
                 {% for tag in pen.tags %}
-                <li><a href="/tag/{{ tag.id }}">{{ tag.name }}</a></li>
+                <li><a href="{{ url_for('tag', id = tag.id) }}">{{ tag.name }}</a></li>
                 {% endfor %}
             </ul>
         </div>

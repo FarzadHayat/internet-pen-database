@@ -4,8 +4,9 @@ from wtforms import IntegerField, TextField, TextAreaField, SelectField, FileFie
 from wtforms.validators import DataRequired, Optional, ValidationError
 import models
 
-class Select_Pen(FlaskForm):
-    pens = SelectField('pens', validators = [DataRequired()], coerce = int)
+class Search(FlaskForm):
+    brand = SelectField('brand', validators = [DataRequired()])
+    tag = SelectField('tag', validators = [DataRequired()])
 
 class Add_Brand(FlaskForm):
     name = TextField('name', validators=[DataRequired()])

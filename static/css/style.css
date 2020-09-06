@@ -12,7 +12,7 @@ body{
     overflow: hidden;
     font-family: cursive;
     /* color theme */
-    --main-highlight-color: #ac961c;
+    --main-highlight-color: rgb(201, 160, 15);
     /* gets value of navbar items from a javascript function */
     --navbar-items: 4;
 }
@@ -56,7 +56,7 @@ nav{
 
 /* navbar links */
 nav a{
-    padding: 1rem 0;
+    padding: 1em 0;
 }    
 
 /* highlight navbar page link on mouse hover */

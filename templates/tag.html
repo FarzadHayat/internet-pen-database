@@ -2,20 +2,20 @@
 {% block content %}
 <div id="item-page">
     <!-- tag title -->
-    <h1>{{tag.name}}</h1>
+    <h1>{{ tag.name }}</h1>
     <div id="item-page-container">
         <!-- tag photo -->
         <div id="page-photo">
-            <img src="{{ tag.photo }}"/>
+            <img src="/static/images/tags/{{ tag.photo }}"/>
         </div>
         <!-- tag details -->
         <div id="page-details">
-            <p>{{tag.desc}}</p>
+            <p>{{ tag.desc }}</p>
             <br>
             <!-- list all pens for this tag -->
             <ul>
                 {% for pen in tag.pens %}
-                <li><a href="/pen/{{ pen.id }}">{{ pen.name }}</a></li>
+                <li><a href="{{ url_for('pen', id = pen.id) }}">{{ pen.name }}</a></li>
                 {% endfor %}
             </ul>
         </div>
