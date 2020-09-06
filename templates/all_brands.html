@@ -8,14 +8,16 @@
                 <!-- brand logo as a background image -->
                 <div class="card-photo" style="background-image: url('/static/images/brands/{{ brand.photo }}')"></div>
                 <!-- brand information -->
-                <div class="card-info">
+                <!-- jinja2 if statement to correct for card grid template -->
+                <!-- This adjustment is because non-deletable cards have one less row in the grid -->
+                <div class="card-info" {% if brand.deletable == true %}style="grid-template-rows: 1fr 3fr 1fr 1fr;"{% endif %}>
                     <h2 class="title">{{ brand.name }}</h2>
                     <p class="description">{{ brand.desc }}</p>
-                    <a class="readmore" href="/brand/{{ brand.id }}">Read more...</a>
+                    <a class="readmore" href="{{ url_for('brand', id = brand.id) }}">Read more</a>
                     {% if brand.deletable == true %}
                     <div class="edit-delete">
-                        <a class="edit" href="/edit_brand/{{ brand.id }}">Edit</a>
-                        <a class="delete" href="/delete_brand/{{ brand.id }}">Delete</a>
+                        <a class="edit" href="{{ url_for('edit_brand', id = brand.id) }}">Edit</a>
+                        <a class="delete" href="{{ url_for('delete_brand', id = brand.id) }}">Delete</a>
                     </div>
                     {% endif %}
                 </div>
@@ -27,5 +29,6 @@
             <a href="{{ url_for('add_brand') }}"></a>
         </div>
     </div>
+    <!-- give the section some breathing room so that the screen doesnt jump to the next section on the first scroll -->
     <div style="margin-top: 250px"></div>
 </div>

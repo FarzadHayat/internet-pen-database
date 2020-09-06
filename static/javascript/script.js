@@ -14,17 +14,6 @@ squarify = () =>{
     }
 }
 
-// Squarify to set the intial size of the cards.
-window.onload = () =>{
-    squarify();
-    navbar();
-}
-
-// Squarify every time the window is resized.
-window.onresize = () =>{
-    squarify();
-}
-
 // Flip brand card on click
 flip = (cardContent) =>{
     // Flip
@@ -65,15 +54,30 @@ $(document).ready(function(){
     })
 })
 
-// shortify = () =>{
-//     textList = document.getElementsByClassName("preview-text");
-//     console.log(list)
-//     // para.innerText = para.innerText.substr(0, 100) + '...';
-//     var i;
-//     for (i = 0; i < list.length; i++) {
-//         console.log("hello")
-//     }
-// }
+// Shorten brand card description length and end with a ...
+shortify = () =>{
+    const descriptionList = $('.card-info .description');
+    const length = 140;
+    for(var i = 0; i < descriptionList.length; i++){
+        if(descriptionList[i].innerText.length > length){
+            descriptionList[i].innerText = descriptionList[i].innerText.substr(0, length) + '...';
+        }
+    }
+}
 
 // shortify();
 
+// Squarify to set the intial size of the cards.
+window.onload = () =>{
+    squarify();
+    navbar();
+    shortify();
+    slideshow();
+}
+
+// Squarify every time the window is resized.
+window.onresize = () =>{
+    squarify();
+    shortify();
+    slideshowResize();
+}

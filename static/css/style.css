@@ -1,3 +1,9 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
 /* smooth scrolling for anchor links */
 html{
     height: 100%;
@@ -7,7 +13,6 @@ html{
 body{
     background-color: #181a1b;
     color: white;
-    margin: 0;
     height: 100%;
     overflow: hidden;
     font-family: cursive;
@@ -21,7 +26,6 @@ body{
 #main{
     scroll-behavior: smooth;
     scroll-padding-top: 50px;
-    margin: 0;
     height: inherit;
     width: inherit;
     overflow-y: scroll;
@@ -30,7 +34,6 @@ body{
 
 /* applies to every container div inside the body eg. landing page, all brands, all tags */
 .section{
-    margin: 0;
     width: 100%;
     min-height: 100vh;
     display: flex;
@@ -40,8 +43,6 @@ body{
 
 /* navigation bar */
 nav{
-    margin: 0;
-    padding: 0;
     overflow: hidden;
     background-color: #252729;
     text-align: center;
@@ -98,15 +99,12 @@ a{
 /* page titles */
 h1{
     text-align: center;
-    margin: 0;
     padding: 1rem 0;
 }
 
 /* all brands page */
 /* grid of all brand info cards */
 #brands-grid{
-    margin: 0;
-    padding: 0;
     width: 100%;
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
@@ -155,30 +153,27 @@ h1{
     background-color: #111111;
     display: grid;
     grid-template-columns: auto;
-    grid-template-rows: 1fr 3fr 1fr 1fr;
-}
-
-.card-info:second-child{
-    grid-row: 3fr;
+    grid-template-rows: 1fr 3fr 1fr;
 }
 
 .card-info *{
     display: flex;
     justify-content: center;
-    align-items: center;
-    margin: 0;
 }
 
 .card-info .title{
     text-align: center;
+    align-items: center;
 }
 
 .card-info .description{
     overflow: hidden;
+    padding: 0 10px;
 }
 
 .card-info .readmore{
     text-align: center;
+    align-items: center;
     color: royalblue;
 }
 
@@ -186,16 +181,18 @@ h1{
     box-shadow: 0px 0px 0px 5px var(--main-highlight-color) inset;
 }
 
+/* parent for edit and delete buttons */
 .card-info .edit-delete{
+    align-items: center;
     display: grid;
     grid-template-columns: 1fr 1fr;
 }
 
+/* children of edit-delete div includes the edit and delete buttons */
 .card-info .edit-delete *{
     display: flex;
     justify-content: center;
     align-items: center;
-    margin: 0;
     width: 100%;
     height: 100%;
 }
@@ -232,14 +229,12 @@ h1{
 
 /* individual pages */
 #item-page{
-    margin: 0;
     padding: 2rem;
 }
 
 #item-page-container{
     width: 100%;
     display: flex;
-    margin: 0;
 }
 
 #page-photo{
