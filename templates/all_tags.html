@@ -1,12 +1,28 @@
 <div class="section" id="tags">
     <h1>All Tags</h1>
     <div id="tags-grid">
-        <div id="slides">
+        <i id="prev-button" class="fas fa-angle-left"></i>
+        <i id="next-button" class="fas fa-angle-right"></i>
+        <!-- get length of tags list and add two to make up for lastClone and firstClone -->
+        <div id="slideshow" style="grid-template-columns: repeat({{ tags|length + 2 }}, 100%);">
+            <!-- last tag repeats at the start to create seamless loop -->
+            {% set lastTag = tags|last %}
+            <div class="slide" id="lastClone">
+                <img src="/static/images/tags/{{ lastTag.photo }}">
+                <a href="{{ url_for('tag', id = lastTag.id) }}"><p>{{ lastTag.name }}</p></a>
+            </div>
             {% for tag in tags %}
             <div class="slide">
-                </p><a href="/tag/{{ tag.id }}">{{ tag.name }}</a>
+                <img src="/static/images/tags/{{ tag.photo }}">
+                <a href="{{ url_for('tag', id = tag.id) }}"><p>{{ tag.name }}</p></a>
             </div>
             {% endfor %}
+            <!-- first tag repeats at the end -->
+            {% set firstTag = tags|first %}
+            <div class="slide" id="firstClone">
+                <img src="/static/images/tags/{{ firstTag.photo }}">
+                <a href="{{ url_for('tag', id = firstTag.id) }}"><p>{{ firstTag.name }}</p></a>
+            </div>
         </div>
     </div>
 </div>

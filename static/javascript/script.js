@@ -33,7 +33,7 @@ $(document).ready(function(){
     
     var navLink = $('.navlink');
     const main = $('#main');
-
+    
     $(main).scroll(function(){
         // get location of scroll bar
         var scrollBarLocation = $(this).scrollTop();
@@ -41,7 +41,7 @@ $(document).ready(function(){
         // get distance of scroll bar to each section
         navLink.each(function(){
             var sectionOffset = $(this.hash).offset().top + scrollBarLocation - 200;
-
+            
             // highlight active link and un-highlight the rest
             if(sectionOffset <= scrollBarLocation){
                 $(this).addClass('active');
@@ -65,7 +65,71 @@ shortify = () =>{
     }
 }
 
-// shortify();
+// carousel slideshow
+var slideshow;
+var slides;
+var counter;
+var size;
+
+slideshow = () =>{
+    // parents with grid property
+    slideshow = document.querySelector('#slideshow');
+    // get list of all slide divs
+    slides = document.querySelectorAll('.slide');
+    console.log("Slide length: " + slides.length);
+    
+    // Buttons
+    const prevButton = document.querySelector('#prev-button');
+    const nextButton = document.querySelector('#next-button');
+    
+    // Counter
+    counter = 1;
+    size = slideshow.clientWidth;
+
+    slideshow.style.transform = 'translateX(' + (-size * counter) + 'px)';
+
+    // Button Listeners
+    nextButton.addEventListener('click', ()=>{
+        if(counter >= slides.length - 1) return;
+        slideshow.style.transition = "transform 0.4s ease-in-out";
+        counter++;
+        slideshow.style.transform = 'translateX(' + (-size * counter) + 'px)';
+        // console.log("User clicked next | Counter: " + counter);
+    });
+
+    prevButton.addEventListener('click', ()=>{
+        if(counter <= 0) return;
+        slideshow.style.transition = "transform 0.4s ease-in-out";
+        counter--;
+        slideshow.style.transform = 'translateX(' + (-size * counter) + 'px)';
+        // console.log("User clicked prev | Counter: " + counter);
+    });
+
+    // Slideshow Listeners
+    slideshow.addEventListener('transitionend', ()=>{
+        // Create loop at the start that goes back to the last slide (clone of last slide at the start)
+        if(slides[counter].id ===  'lastClone'){
+            slideshow.style.transition = "none";
+            counter = slides.length - 2;
+            slideshow.style.transform = 'translateX(' + (-size * counter) + 'px)';
+            // console.log("Landed on first slide, going back to lastClone | Counter: " + counter);
+        }
+        // Create loop at the end that goes back to the first slide (clone of first slide at the end)
+        if(slides[counter].id ===  'firstClone'){
+            slideshow.style.transition = "none";
+            counter = slides.length - counter;
+            slideshow.style.transform = 'translateX(' + (-size * counter) + 'px)';
+            // console.log("Landed on last slide, going back to firstClone | Counter: " + counter);
+        }    
+    });
+    
+}
+
+slideshowResize = () =>{
+    size = slideshow.clientWidth;
+    slideshow.style.transition = "none";
+    slideshow.style.transform = 'translateX(' + (-size * counter) + 'px)';
+}
 
 // Squarify to set the intial size of the cards.
 window.onload = () =>{

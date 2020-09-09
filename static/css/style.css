@@ -271,3 +271,90 @@ h1{
     font-size: 16px;
     background-color: var(--main-highlight-color);
 }
+
+/* all tags page */
+/* carousel slideshow of all tags */
+#tags-grid{
+    margin: auto;
+    border: 5px solid var(--main-highlight-color);
+    width: 48vw;
+    height: 32vw;
+    overflow: hidden;
+    position: relative;
+    display: flex;
+}
+
+/* carousel slideshow */
+#slideshow{
+    width: 100%;
+    height: 100%;
+    display: grid;
+}
+
+/* slide */
+.slide{
+    width: 100%;
+    height: 100%;
+    transition: all 0.4s ease-in-out;
+}
+
+.slide:hover img{
+    filter: blur(20px);
+    transition: all 0.4s ease-in-out;
+}
+
+.slide:hover a{
+    opacity: 1;
+    transition: all 0.4s ease-in-out;
+}
+
+/* background image */
+.slide img{
+    position: absolute;
+    display: block;
+    width: 100%;
+    height: 100%;
+    filter: blur(0px);
+    transition: all 0.4s ease-in-out;
+}
+
+/* title and description */
+.slide a{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    transition: all 0.4s ease-in-out;
+    display: grid;
+    place-items: center;
+}
+
+.slide a p{
+    display: block;
+    -webkit-text-stroke-color: black;
+    -webkit-text-stroke-width: 0.15vw;
+    text-align: center;
+    font-size: 3vw;
+}
+
+/* back button */
+#prev-button{
+    position: absolute;
+    top: 50%;
+    z-index: 5;
+    left: 5%;
+    font-size: 60px;
+    color: var(--main-highlight-color);
+    cursor: pointer;
+}
+
+/* next button */
+#next-button{
+    position: absolute;
+    top: 50%;
+    z-index: 5;
+    right: 5%;
+    font-size: 60px;
+    color: var(--main-highlight-color);
+    cursor: pointer;
+}
