@@ -8,9 +8,11 @@ navbar = () =>{
 // Resize all brand cards into squares by setting the height to equal the width.
 squarify = () =>{
     var cardList = document.getElementsByClassName('card');
-    for(var i = 0; i < cardList.length; i++){
-        var cardWidth = $(cardList[i]).width();
-        $(cardList[i]).css({'height': cardWidth+'px'});
+    if(cardList != null){
+        for(var i = 0; i < cardList.length; i++){
+            var cardWidth = $(cardList[i]).width();
+            $(cardList[i]).css({'height': cardWidth+'px'});
+        }   
     }
 }
 
@@ -33,34 +35,52 @@ $(document).ready(function(){
     
     var navLink = $('.navlink');
     const main = $('#main');
+    var homeLink = $('#homelink');
+    var searchLink = $('#searchlink');
     
-    $(main).scroll(function(){
-        // get location of scroll bar
-        var scrollBarLocation = $(this).scrollTop();
-
-        // get distance of scroll bar to each section
-        navLink.each(function(){
-            var sectionOffset = $(this.hash).offset().top + scrollBarLocation - 200;
-            
-            // highlight active link and un-highlight the rest
-            if(sectionOffset <= scrollBarLocation){
-                $(this).addClass('active');
-                $(this).siblings().removeClass('active');
-            }
-            // Debug
-            // console.log(this.hash, "Scroll bar location: ", scrollBarLocation)
-            // console.log(this.hash, "Section offset: ", sectionOffset)
+    
+    const urlPath = window.location.pathname;
+    
+    // if user is on the home aka. slanding page
+    if(urlPath == "/"){
+        // highlight
+        homeLink.addClass('active');
+        homeLink.siblings().removeClass('active');
+        $(main).scroll(function(){
+            // get location of scroll bar
+            var scrollBarLocation = $(this).scrollTop();
+    
+            // get distance of scroll bar to each section
+            navLink.each(function(){
+                var sectionOffset = $(this.hash).offset().top + scrollBarLocation - 200;
+                
+                // highlight active link and un-highlight the rest
+                if(sectionOffset <= scrollBarLocation){
+                    $(this).addClass('active');
+                    $(this).siblings().removeClass('active');
+                    searchLink.removeClass('active');
+                }
+                // Debug
+                // console.log(this.hash, "Scroll bar location: ", scrollBarLocation)
+                // console.log(this.hash, "Section offset: ", sectionOffset)
+            })
         })
-    })
+    }
+    if(urlPath == "/search"){
+        searchLink.addClass('active');
+        searchLink.siblings().removeClass('active');
+    }
 })
 
 // Shorten brand card description length and end with a ...
 shortify = () =>{
     const descriptionList = $('.card-info .description');
     const length = 140;
-    for(var i = 0; i < descriptionList.length; i++){
-        if(descriptionList[i].innerText.length > length){
-            descriptionList[i].innerText = descriptionList[i].innerText.substr(0, length) + '...';
+    if(descriptionList != null){
+        for(var i = 0; i < descriptionList.length; i++){
+            if(descriptionList[i].innerText.length > length){
+                descriptionList[i].innerText = descriptionList[i].innerText.substr(0, length) + '...';
+            }
         }
     }
 }
@@ -74,9 +94,12 @@ var size;
 slideshow = () =>{
     // parents with grid property
     slideshow = document.querySelector('#slideshow');
+    if(slideshow == null){
+        return;
+    }
     // get list of all slide divs
     slides = document.querySelectorAll('.slide');
-    console.log("Slide length: " + slides.length);
+    // console.log("Slide length: " + slides.length);
     
     // Buttons
     const prevButton = document.querySelector('#prev-button');
@@ -126,6 +149,9 @@ slideshow = () =>{
 }
 
 slideshowResize = () =>{
+    if(slideshow == null){
+        return;
+    }
     size = slideshow.clientWidth;
     slideshow.style.transition = "none";
     slideshow.style.transform = 'translateX(' + (-size * counter) + 'px)';
