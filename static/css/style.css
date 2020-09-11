@@ -17,7 +17,7 @@ body{
     overflow: hidden;
     font-family: cursive;
     /* color theme */
-    --main-highlight-color: rgb(201, 160, 15);
+    --main-color-theme: rgb(201, 160, 15);
     /* gets value of navbar items from a javascript function */
     --navbar-items: 4;
 }
@@ -25,40 +25,54 @@ body{
 /* main div inside body that contains everything */
 #main{
     scroll-behavior: smooth;
-    scroll-padding-top: 50px;
-    height: inherit;
-    width: inherit;
+    height: 100%;
+    width: 100%;
     overflow-y: scroll;
     scroll-snap-type: y mandatory;
+    scroll-padding-top: 60px;
 }
 
 /* applies to every container div inside the body eg. landing page, all brands, all tags */
 .section{
     width: 100%;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
+    /* adjust for fixed header by substracting 60px */
+    min-height: calc(100vh - 60px);
+    display: grid;
+    place-items: start center;
     scroll-snap-align: start;
+}
+
+/* page titles */
+h1{
+    text-align: center;
 }
 
 /* navigation bar */
 nav{
     overflow: hidden;
     background-color: #252729;
-    text-align: center;
     position: fixed;
     width: 100%;
-    top: 0;
+    height: 60px;
     z-index: 1000;
     transition: all 0.4s ease;
     display: grid;
     grid-template-columns: repeat(var(--navbar-items), 1fr);
+    place-items: center;
 }    
 
 /* navbar links */
 nav a{
-    padding: 1em 0;
+    width: 100%;
+    height: 100%;
+    display: grid;
+    place-items: center;
 }    
+
+/* text inside each nav link */
+nav p{
+    font-size: 1.2em;
+}
 
 /* highlight navbar page link on mouse hover */
 nav a:hover{
@@ -67,7 +81,7 @@ nav a:hover{
 
 /* highlight the current active navbar link */
 nav .active{
-    background-color: var(--main-highlight-color) !important;
+    background-color: var(--main-color-theme) !important;
 }    
 
 /* home page - landing screen */
@@ -76,12 +90,10 @@ nav .active{
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
-    height: 100vh;
     width: 100%;
+    height: 100%;
     display: grid;
     place-items: center;
-    /* adjust for the fixed header */
-    margin-top: -50px;
 }
 
 #wallpaper h1{
@@ -94,12 +106,6 @@ nav .active{
 a{
     text-decoration: none;
     color: white;
-}
-
-/* page titles */
-h1{
-    text-align: center;
-    padding: 1rem 0;
 }
 
 /* all brands page */
@@ -140,7 +146,7 @@ h1{
 
 /* hightlight card on hover */
 .card-photo:hover{
-    box-shadow: 0px 0px 0px 5px var(--main-highlight-color) inset;
+    box-shadow: 0px 0px 0px 5px var(--main-color-theme) inset;
 }
 
 /* card info */
@@ -178,7 +184,7 @@ h1{
 }
 
 .card-info .readmore:hover{
-    box-shadow: 0px 0px 0px 5px var(--main-highlight-color) inset;
+    box-shadow: 0px 0px 0px 5px var(--main-color-theme) inset;
 }
 
 /* parent for edit and delete buttons */
@@ -224,7 +230,7 @@ h1{
 }
 
 #add-card a:hover{
-    background-color: var(--main-highlight-color);
+    background-color: var(--main-color-theme);
 }
 
 /* individual pages */
@@ -269,14 +275,14 @@ h1{
     text-decoration: none;
     display: inline-block;
     font-size: 16px;
-    background-color: var(--main-highlight-color);
+    background-color: var(--main-color-theme);
 }
 
 /* all tags page */
 /* carousel slideshow of all tags */
 #tags-grid{
     margin: auto;
-    border: 5px solid var(--main-highlight-color);
+    border: 5px solid var(--main-color-theme);
     width: 48vw;
     height: 32vw;
     overflow: hidden;
@@ -344,7 +350,7 @@ h1{
     z-index: 5;
     left: 5%;
     font-size: 60px;
-    color: var(--main-highlight-color);
+    color: var(--main-color-theme);
     cursor: pointer;
 }
 
@@ -355,6 +361,6 @@ h1{
     z-index: 5;
     right: 5%;
     font-size: 60px;
-    color: var(--main-highlight-color);
+    color: var(--main-color-theme);
     cursor: pointer;
 }

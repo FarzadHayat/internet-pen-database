@@ -1,5 +1,4 @@
 <div class="section" id="brands">
-    <h1>All Brands</h1>
     <div id="brands-grid">
         <!-- current brands -->
         {% for brand in brands %}
@@ -28,7 +27,7 @@
         <div id="add-card">
             <a href="{{ url_for('add_brand') }}"></a>
         </div>
+        <!-- give the section some breathing room so that the screen doesnt jump to the next section on the first scroll -->
+        <div style="margin-top: 250px"></div>
     </div>
-    <!-- give the section some breathing room so that the screen doesnt jump to the next section on the first scroll -->
-    <div style="margin-top: 250px"></div>
 </div>
