@@ -1,15 +1,34 @@
 {% extends 'layout.html' %}
 {% block content %}
 <!-- html page for searching the website content -->
-<div class="section" style="grid-template-rows: 100px 1fr;">
-  <h1>{{ title }}</h1>
+<div class="section" style="grid-template-rows: repeat(3, minmax(10vh, auto)) 1fr;" id="search">
+  <h1 style="margin: auto;">{{ title }}</h1>
+  <!-- search form -->
   <div id="form">
     <form method="POST" enctype="multipart/form-data">
       {{ form.csrf_token }}
-      <p>Brand: {{ form.brand }} <span style="color:red">{{ form.brand.errors }}</span></p>
-      <p>Tag: {{ form.tag }} <span style="color:red">{{ form.tag.errors }}</span></p>
+      <label>Brand:</label>
+      <p>{{ form.brand }} {% if form.brand.errors %}<span style="color:red">{{ form.brand.errors }}</span>{% endif %}</p>
+      <label>Tag:</label>
+      <p>{{ form.tag }} {% if form.tag.errors %}<span style="color:red">{{ form.tag.errors }}</span>{% endif %}</p>
       <input type="submit" value="Search" id="submit">
     </form>
   </div>
+  <!-- search results | only display this section if user has submitted a search -->
+  {% if results != null %}
+  <h1 style="margin: auto;">Search results for <i>{{ tag|lower }} {{ brand }}</i> pens</h1>
+  <div id="search-results">
+    <!-- display a list of all pens found -->
+    {% if results|length != 0 %}
+    {% for pen in results %}
+    <h2><a href="{{ url_for('pen', id = pen.id) }}">{{ pen.name }}</a></h2>
+    <p>{{ pen.desc }}</p>
+    {% endfor %}
+    <!-- if no pens are found for search options -->
+    {% else %}
+    <h2 style="color: #d83737;">No pens found</h2>
+    {% endif %}
+  </div>
+  {% endif %}
 </div>
 {% endblock %}

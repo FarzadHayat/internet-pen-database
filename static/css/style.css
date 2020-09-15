@@ -20,6 +20,8 @@ body{
     --main-color-theme: rgb(201, 160, 15);
     /* gets value of navbar items from a javascript function */
     --navbar-items: 4;
+    /* navbar height variable | so I can modify the value in only one place */
+    --navbar-height: 60px;
 }
 
 /* main div inside body that contains everything */
@@ -29,21 +31,33 @@ body{
     width: 100%;
     overflow-y: scroll;
     scroll-snap-type: y mandatory;
-    scroll-padding-top: 60px;
+    scroll-padding-top: var(--navbar-height);
 }
 
 /* applies to every container div inside the body eg. landing page, all brands, all tags */
 .section{
     width: 100%;
-    /* adjust for fixed header by substracting 60px */
-    min-height: calc(100vh - 60px);
+    /* adjust for fixed header by substracting navbar height */
+    min-height: calc(100vh - var(--navbar-height));
     display: grid;
     place-items: start center;
     scroll-snap-align: start;
 }
 
-/* page titles */
-h1{
+/* flash messages */
+#flashes{
+    min-height: auto;
+    row-gap: 1px;
+}
+
+.flash{
+    width: 100%;
+    background-color: red;
+    text-align: center;
+}
+
+/* page titles and subtitles */
+h1, h2, h3{
     text-align: center;
 }
 
@@ -53,7 +67,7 @@ nav{
     background-color: #252729;
     position: fixed;
     width: 100%;
-    height: 60px;
+    height: var(--navbar-height);
     z-index: 1000;
     transition: all 0.4s ease;
     display: grid;
@@ -259,14 +273,42 @@ a{
     height: auto;
 }
 
-/* forms */
-#form{
-    display: grid;
-    place-items: center;
-    width: 20%;
+/* search page */
+/* entire page */
+#search{
+    padding: 0 10vw;
 }
 
-#submit{
+/* search form */
+#form{
+    width: 100%;
+    height: 100%;
+}
+
+#form form{
+    margin: auto;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    place-items: center;
+}
+
+#form p{
+    width: 100%;
+    height: 100%;
+    display: grid;
+    grid-template-columns: auto;
+    place-items: center;
+    padding: 0.4em;
+}
+
+#form select{
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    justify-content: center;
+}
+
+#form #submit{
     width: 100%;
     border: none;
     padding: 15px 32px;
@@ -276,6 +318,11 @@ a{
     display: inline-block;
     font-size: 16px;
     background-color: var(--main-color-theme);
+}
+
+/* search results */
+#search-results{
+
 }
 
 /* all tags page */

@@ -11,6 +11,15 @@
     <body>
         <div id="main">
             {% include 'nav.html' %}
+            {% with messages = get_flashed_messages() %}
+            {% if messages %}
+            <div class="section" id="flashes">
+                {% for message in messages %}
+                <p class="flash">{{ message }}</p>
+                {% endfor %}
+            </div>
+            {% endif %}
+            {% endwith %}
             {% block content %}{% endblock %}
         </div>
     </body>

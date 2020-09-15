@@ -1,6 +1,6 @@
 import os
 import secrets
-from flask import Flask, render_template, abort, request, redirect, url_for
+from flask import Flask, render_template, abort, request, redirect, url_for, flash
 from flask_sqlalchemy import SQLAlchemy
 import models
 from forms import Search, Add_Brand
@@ -72,12 +72,15 @@ def add_brand():
     # form submitted to the server by a user
     if form.validate_on_submit():
         new_brand = models.Brand()
+        # set brand name and description from form data
         new_brand.name = form.name.data
         new_brand.desc = form.desc.data
         if form.photo.data:
             photo_file = save_photo(form.photo.data)
             new_brand.photo = photo_file
         new_brand.deletable = True
+        # flash message to let user know that the brand has been created
+        flash('{} brand successfully created.'.format(new_brand.name))
         db.session.add(new_brand)
         db.session.commit()
         return redirect(url_for('brand', id=new_brand.id))
@@ -92,6 +95,7 @@ def edit_brand(id):
     brand = db.session.query(models.Brand).filter(models.Brand.id==id).first_or_404()
     # form submitted to the server by a user
     if form.validate_on_submit():
+        # set brand name and description from form data
         brand.name = form.name.data
         brand.desc = form.desc.data
         # check if user wants to update the brand photo
@@ -102,13 +106,17 @@ def edit_brand(id):
             delete_photo(brand.photo)
             # set new photo
             brand.photo = photo_file
+        # flash message to let user know that the brand has been edited
+        flash('{} brand successfully edited.'.format(brand.name))
         db.session.commit()
         return redirect(url_for('brand', id=brand.id))
     # populate fields with currently saved data
     form.name.data = brand.name
     form.desc.data = brand.desc
+    # title for the edit page
+    title = "Editing {} brand".format(brand.name)
     # request to see the page
-    return render_template('add_edit_brand.html', form = form, title = "Edit Brand", legend = "Save")
+    return render_template('add_edit_brand.html', form = form, title = title, legend = "Save")
 
 # form to delete a brand from the database
 @app.route('/delete_brand/<int:id>')
@@ -117,6 +125,8 @@ def delete_brand(id):
     # delete saved photo from files
     if brand.photo:
         photo_file = delete_photo(brand.photo)
+    # flash message to let user know that the brand has been deleted
+    flash('{} brand successfully deleted.'.format(brand.name))
     # delete brand from database
     db.session.delete(brand)
     db.session.commit()
@@ -142,9 +152,8 @@ def search():
             tag = models.Tag.query.filter_by(id = selected_tag).first()
             # Get a list of the pens common between the brand and the tag chosen.
             results = list(set(brand.pens).intersection(tag.pens))
-            print(results)
-            # render the search results page
-            return render_template('search_results.html', brand = brand.name, tag = tag.name, results = results)
+            # render the search results
+            return render_template('search.html', title = "Find a Pen", form = form, brand = brand.name, tag = tag.name, results = results)
         else:
             abort(404)
     return render_template('search.html', title = "Find a Pen", form = form)
