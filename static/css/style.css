@@ -17,7 +17,9 @@ body{
     overflow: hidden;
     font-family: cursive;
     /* color theme */
-    --main-color-theme: rgb(201, 160, 15);
+    --theme-color: #FFB606;
+    --black-color: #1C1C1C;
+    --gray-color: #3B3B3B;
     /* gets value of navbar items from a javascript function */
     --navbar-items: 4;
     /* navbar height variable | so I can modify the value in only one place */
@@ -64,7 +66,7 @@ h1, h2, h3{
 /* navigation bar */
 nav{
     overflow: hidden;
-    background-color: #252729;
+    background-color: var(--gray-color);
     position: fixed;
     width: 100%;
     height: var(--navbar-height);
@@ -90,12 +92,12 @@ nav p{
 
 /* highlight navbar page link on mouse hover */
 nav a:hover{
-    background-color: #111111;
+    background-color: var(--black-color);
 }    
 
 /* highlight the current active navbar link */
 nav .active{
-    background-color: var(--main-color-theme) !important;
+    background-color: var(--theme-color) !important;
 }    
 
 /* home page - landing screen */
@@ -151,7 +153,7 @@ a{
     height: 100%;
     position: absolute;
     backface-visibility: hidden;
-    background-color: #2b2b2b;
+    background-color: var(--black-color);
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
@@ -160,7 +162,7 @@ a{
 
 /* hightlight card on hover */
 .card-photo:hover{
-    box-shadow: 0px 0px 0px 5px var(--main-color-theme) inset;
+    box-shadow: 0px 0px 0px 5px var(--theme-color) inset;
 }
 
 /* card info */
@@ -170,7 +172,7 @@ a{
     position: absolute;
     backface-visibility: hidden;
     transform: rotateY(180deg);
-    background-color: #111111;
+    background-color: var(--black-color);
     display: grid;
     grid-template-columns: auto;
     grid-template-rows: 1fr 3fr 1fr;
@@ -198,7 +200,7 @@ a{
 }
 
 .card-info .readmore:hover{
-    box-shadow: 0px 0px 0px 5px var(--main-color-theme) inset;
+    box-shadow: 0px 0px 0px 5px var(--theme-color) inset;
 }
 
 /* parent for edit and delete buttons */
@@ -236,7 +238,7 @@ a{
     display: block;
     width: 100%;
     height: 100%;
-    background-color:#707070;
+    background-color: var(--gray-color);
     background-image: url('/static/images/add.png');
     background-repeat: no-repeat;
     background-position: center;
@@ -244,7 +246,7 @@ a{
 }
 
 #add-card a:hover{
-    background-color: var(--main-color-theme);
+    background-color: var(--theme-color);
 }
 
 /* individual pages */
@@ -317,7 +319,7 @@ a{
     text-decoration: none;
     display: inline-block;
     font-size: 16px;
-    background-color: var(--main-color-theme);
+    background-color: var(--theme-color);
 }
 
 /* search results */
@@ -329,7 +331,7 @@ a{
 /* carousel slideshow of all tags */
 #tags-grid{
     margin: auto;
-    border: 5px solid var(--main-color-theme);
+    border: 5px solid var(--theme-color);
     width: 48vw;
     height: 32vw;
     overflow: hidden;
@@ -397,7 +399,7 @@ a{
     z-index: 5;
     left: 5%;
     font-size: 60px;
-    color: var(--main-color-theme);
+    color: var(--theme-color);
     cursor: pointer;
 }
 
@@ -408,6 +410,6 @@ a{
     z-index: 5;
     right: 5%;
     font-size: 60px;
-    color: var(--main-color-theme);
+    color: var(--theme-color);
     cursor: pointer;
 }
