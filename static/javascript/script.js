@@ -37,6 +37,7 @@ $(document).ready(function(){
     const main = $('#main');
     var homeLink = $('#homelink');
     var searchLink = $('#searchlink');
+    var creditsLink = $('#creditslink')
     
     
     const urlPath = window.location.pathname;
@@ -59,6 +60,7 @@ $(document).ready(function(){
                     $(this).addClass('active');
                     $(this).siblings().removeClass('active');
                     searchLink.removeClass('active');
+                    creditsLink.removeClass('active');
                 }
                 // Debug
                 // console.log(this.hash, "Scroll bar location: ", scrollBarLocation)
@@ -69,6 +71,10 @@ $(document).ready(function(){
     if(urlPath == "/search"){
         searchLink.addClass('active');
         searchLink.siblings().removeClass('active');
+    }
+    if(urlPath == "/credits"){
+        creditsLink.addClass('active');
+        creditsLink.siblings().removeClass('active');
     }
 })
 

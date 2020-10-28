@@ -1,14 +1,18 @@
 {% extends 'layout.html' %}
 {% block content %}
 <!-- html page for add or edit brands -->
-<div class="section">
-  <h1>{{ title }}</h1>
+<div class="section" style="grid-template-rows: minmax(10vh, auto) 1fr; place-items: center center;" id="add-edit-brand">
+  <h1 style="margin: auto;">{{ title }}</h1>
+  <!-- add/edit brand form -->
   <div id="form">
     <form method="POST" enctype="multipart/form-data">
       {{ form.csrf_token }}
-      <p>Name: {{ form.name }} <span style="color:red">{{ form.name.errors }}</span></p>
-      <p>Description: {{ form.desc }} <span style="color:red">{{ form.desc.errors }}</span></p>
-      <p>Photo: {{ form.photo }} <span style="color:red">{{ form.photo.errors }}</span></p>
+      <label>Name:</label>
+      <p>{{ form.name }} {% if form.name.errors %}<span style="color:red">{{ form.name.errors }}</span>{% endif %}</p>
+      <label>Description:</label>
+      <p>{{ form.desc }} {% if form.desc.errors %}<span style="color:red">{{ form.desc.errors }}</span>{% endif %}</p>
+      <label>Photo:</label>
+      <p>{{ form.photo }} {% if form.photo.errors %}<span style="color:red">{{ form.photo.errors }}</span>{% endif %}</p>
       <input type="submit" value="{{ legend }}" id="submit">
     </form>
   </div>

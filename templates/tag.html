@@ -15,7 +15,7 @@
             <!-- list all pens for this tag -->
             <ul>
                 {% for pen in tag.pens %}
-                <li><a href="{{ url_for('pen', id = pen.id) }}">{{ pen.name }}</a></li>
+                <li><a href="{{ url_for('pen', id = pen.id) }}" style="color:green;">{{ pen.name }}</a></li>
                 {% endfor %}
             </ul>
         </div>

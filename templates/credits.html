@@ -1,0 +1,23 @@
+{% extends 'layout.html' %}
+{% block content %}
+<!-- html for the credits page -->
+<div class="section">
+  <h1 style="margin: auto;">Credits</h1>
+  <!-- credits section -->
+  <div id="credits-container">
+    <i id="credits">
+      {% for credit in credits %}
+      <p>{{ credit.name }}</p>
+      <a href="{{ credit.link }}" style="color: green;">{{ credit.link }}</a>
+      {% endfor %}
+    </i>
+  </div>
+  <!-- disclaimer for legal requirements -->
+  <div>
+    <p style="text-align: center;">The information on this website is intended to be accurate and true.<br>
+      However, anybody can access and edit the information so<br>
+      we do not hold resposibility and you should check your own facts.
+    </p>
+  </div>
+</div>
+{% endblock %}

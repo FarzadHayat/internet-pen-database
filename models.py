@@ -1,10 +1,12 @@
 from main import db
 
+
 # pen tag joining table
 PenTag = db.Table('PenTag', db.Model.metadata,
 db.Column('pid', db.Integer, db.ForeignKey('Pen.id')),
 db.Column('tid', db.Integer, db.ForeignKey('Tag.id'))
 )
+
 
 # brands
 class Brand(db.Model):
@@ -20,9 +22,10 @@ class Brand(db.Model):
     def __str__(self):
         return self.name
 
+
 # credits to information or images used in the website
-class Credits(db.Model):
-    __tablename__ = "Credits"
+class Credit(db.Model):
+    __tablename__ = "Credit"
 
     id = db.Column(db.Integer, primary_key = True)
     name = db.Column(db.String, nullable = False)
@@ -30,6 +33,7 @@ class Credits(db.Model):
 
     def __str__(self):
         return self.name
+
 
 # pens
 class Pen(db.Model):
@@ -45,6 +49,7 @@ class Pen(db.Model):
 
     def __str__(self):
         return self.name
+
 
 # tags
 class Tag(db.Model):
