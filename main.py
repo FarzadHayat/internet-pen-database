@@ -167,7 +167,8 @@ def search():
             # Get a list of the pens common between the brand and the tag chosen.
             results = list(set(brand.pens).intersection(tag.pens))
             # render the search results
-            return render_template('search.html', title = "Find a Pen", form = form, results = results, brand = brand.name, tag = tag.name, has_searched = has_searched)
+            return render_template('search.html', title = "Find a Pen", form = form, results = results,
+                                   brand = brand.name, tag = tag.name, has_searched = has_searched)
         else:
             abort(404)
     return render_template('search.html', title = "Find a Pen", form = form, results = results, has_searched = has_searched)

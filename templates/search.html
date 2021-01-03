@@ -29,12 +29,12 @@
             <div class="card-info">
                 <h2 class="title">{{ pen.name }}</h2>
                 <p class="description">{{ pen.desc }}</p>
-                <div class="card-tags">
-                  <!-- {% for card_tag in pen.tags %}
+                <!-- <div class="card-tags">
+                  {% for card_tag in pen.tags %}
                   <p class="card-tag">{{ card_tag }}</p>
-                  {% endfor %} -->
+                  {% endfor %}
                   <p>{{ pen.tags }}</p>
-                </div>
+                </div> -->
                 <a class="readmore" href="{{ url_for('pen', id = pen.id) }}">Read more</a>
             </div>
         </div>
@@ -58,11 +58,11 @@
             <div class="card-info">
                 <h2 class="title">{{ pen.name }}</h2>
                 <p class="description">{{ pen.desc }}</p>
-                <div class="card-tags">
+                <!-- <div class="card-tags">
                   {% for card_tag in pen.tags %}
                   <p class="card-tag">{{ card_tag }}</p>
                   {% endfor %}
-                </div>
+                </div> -->
                 <a class="readmore" href="{{ url_for('pen', id = pen.id) }}">Read more</a>
             </div>
         </div>

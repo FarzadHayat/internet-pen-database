@@ -42,7 +42,7 @@ $(document).ready(function(){
     
     const urlPath = window.location.pathname;
     
-    // if user is on the home aka. slanding page
+    // if user is on the home page
     if(urlPath == "/"){
         // highlight
         homeLink.addClass('active');

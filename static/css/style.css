@@ -17,7 +17,7 @@ body{
     overflow: hidden;
     font-family: cursive;
     /* color theme */
-    --theme-color: #FFB606;
+    --theme-color: #db9c09;
     --black-color: #1C1C1C;
     --gray-color: #3B3B3B;
     /* gets value of navbar items from a javascript function */
@@ -88,6 +88,7 @@ nav a{
 /* text inside each nav link */
 nav p{
     font-size: 1.2em;
+    text-shadow: black 2px 2px;
 }
 
 /* highlight navbar page link on mouse hover */
@@ -179,9 +180,9 @@ a{
 }
 
 /* pens grid */
-#pens-grid .card-info{
+/* #pens-grid .card-info{
     grid-template-rows: 1fr 2fr 1fr 1fr;
-}
+} */
 
 /* card tags */
 .card-tags{
