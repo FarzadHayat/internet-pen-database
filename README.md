@@ -4,13 +4,14 @@ Check the [Development Log](development-log.pdf) for full documentation.
 
 To run the server:
 
-1. Install python and python-pip on your machine.
+1. Download the project zip and extract to a folder.
+2. Make sure you have 'python' and 'python-pip' installed on your machine.
 
-    This is different for every operating system, so look this up for your system.
+    This is done differently for every operating system, so please look this up for your system.
 
-2. Install Flask, Flask-SQLAlchemy, and Flask-WTF from pip.
+3. Install Flask, Flask-SQLAlchemy, and Flask-WTF using pip.
 
     ```pip install -U Flask Flask-SQLAlchemy and Flask-WTF```
 
-3. Execute ```python3 main.py``` in the command line to run the project.
-4. Open http://127.0.0.1:5000 in your favorite browser.
+4. Run the flask server by executing ```flask run``` in the root directory of the project where app.py is located.
+5. Open the link you are given (http://127.0.0.1:5000) in your favorite browser.

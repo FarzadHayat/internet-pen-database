@@ -1,5 +1,4 @@
-from main import db
-
+from app import db
 
 # pen tag joining table
 PenTag = db.Table('PenTag', db.Model.metadata,
@@ -45,7 +44,6 @@ class Pen(db.Model):
     photo = db.Column(db.Text)
     bid = db.Column(db.Integer,db.ForeignKey('Brand.id'), nullable = False)
     tags = db.relationship('Tag', secondary=PenTag, back_populates='pens')
-
 
     def __str__(self):
         return self.name
