@@ -1,4 +1,4 @@
-# pen-website
+# internet-pen-database
 A website about pens made using Python/Flask, SQLite, HTML/CSS, and Javascript.
 Check the [Development Log](development-log.pdf) for full documentation.
 
@@ -6,9 +6,6 @@ To run the server:
 
 1. Download the project zip and extract to a folder.
 2. Make sure you have 'python' and 'python-pip' installed on your machine.
-
-    This is done differently for every operating system, so please look this up for your system.
-
 3. Install Flask, Flask-SQLAlchemy, and Flask-WTF using pip.
 
     ```pip install -U Flask Flask-SQLAlchemy and Flask-WTF```
